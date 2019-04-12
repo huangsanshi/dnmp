@@ -1,11 +1,10 @@
 DNMP（Docker + Nginx + MySQL + PHP7/5 + Redis）是一款全功能的**LNMP一键安装程序**。
 
-**[[ENGLISH]](README-en.md)**
 
 DNMP项目特点：
 1. `100%`开源
 2. `100%`遵循Docker标准
-3. 支持**多版本PHP**共存，可任意切换（PHP5.4、PHP5.6、PHP7.2)
+3. 支持**多版本PHP**共存，可任意切换（PHP5.6、PHP7.2)
 4. 支持绑定**任意多个域名**
 5. 支持**HTTPS和HTTP/2**
 6. **PHP源代码、MySQL数据、配置文件、日志文件**都可在Host中直接修改查看
@@ -30,8 +29,6 @@ DNMP项目特点：
     - [7.1 phpMyAdmin](#71-phpmyadmin)
     - [7.2 phpRedisAdmin](#72-phpredisadmin)
 - [8.在正式环境中安全使用](#8在正式环境中安全使用)
-- [9.常见问题](#9常见问题)
-    - [9.1 如何在PHP代码中使用curl？](#91-如何在php代码中使用curl)
 
 
 ## 1.目录结构
@@ -82,7 +79,7 @@ DNMP项目特点：
 
 要修改端口、日志文件位置、以及是否替换source.list文件等，请修改.env文件，然后重新构建：
 ```bash
-$ docker-compose build php54    # 重建单个服务
+$ docker-compose build php72    # 重建单个服务
 $ docker-compose build          # 重建全部服务
 
 ```
@@ -224,7 +221,7 @@ http://localhost:8080
 ```
 
 MySQL连接信息：
-- host：(本项目的MySQL容器网络)
+- host：(本项目的MySQL容器网络,例如:dnmp_mysql_1)
 - port：`3306`
 - username：（手动在phpmyadmin界面输入）
 - password：（手动在phpmyadmin界面输入）
@@ -236,7 +233,7 @@ http://localhost:8081
 ```
 
 Redis连接信息如下：
-- host: (本项目的Redis容器网络)
+- host: (本项目的Redis容器网络,例如:dnmp_redis_1)
 - port: `6379`
 
 
@@ -246,10 +243,6 @@ Redis连接信息如下：
 2. 增强MySQL数据库访问的安全策略
 3. 增强redis访问的安全策略
 
-
-## 9.常见问题
-### 9.1 如何在PHP代码中使用curl？
-参考这个issue：[https://github.com/yeszao/dnmp/issues/91](https://github.com/yeszao/dnmp/issues/91)
 
 ## License
 MIT
