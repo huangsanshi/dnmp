@@ -55,9 +55,39 @@ DNMP项目特点：
 
 ## 2.快速使用
 1. 本地安装`git`、`docker`和`docker-compose`。
+    ```
+    $ sudo yum -y update   #升级源码包
+    $ sudo yum -y install -y yum-utils device-mapper-persistent-data lvm2   #安装一些必要的系统工具
+    $ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo    #添加软件源信息
+    $ sudo yum makecache fast   #更新 yum 缓存
+    $ sudo yum -y install docker-ce     #安装 Docker-ce
+    ```
+    ```
+    合并命令（此命令可一次性执行上面的安装命令,上面的已经执行则此命令不用再执行）：yum -y install git && sudo yum update && sudo yum install -y yum-utils device-mapper-persistent-data lvm2 && sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo &&  sudo yum makecache fast  &&  sudo yum -y install docker-ce
+    ```
+    ```
+    $ sudo systemctl start docker   #启动 Docker 后台服务
+    $ docker -v     #查看版本，验证是否安装成功
+    ```
+
+    因国外仓库巨慢，所有要切换国内镜像仓库，打开配置文件 /etc/docker/daemon.json（没有时新建该文件）：
+     ```
+    $ vim /etc/docker/daemon.json
+        {
+        "registry-mirrors": ["https://6evg8u3r.mirror.aliyuncs.com"]
+        }
+     ```
+3. 本地安装 `Docker-compose`：
+     ```
+    $ sudo systemctl daemon-reload
+    $ sudo systemctl restart docker  #重启服务
+    $ yum -y install epel-release && yum -y install python-pip && pip install --upgrade pip #安装epel  && 安装pip && 更新pip
+    $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  docker-compose    #安装docker-compose
+    $ docker-compose --version      #查看版本，验证是否安装成功
+    ```
 2. `clone`项目：
     ```
-    $ git clone https://github.com/yeszao/dnmp.git
+    $ git clone https://github.com/huangsanshi/dnmp
     ```
 3. 如果不是`root`用户，还需将当前用户加入`docker`用户组：
     ```
