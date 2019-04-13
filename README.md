@@ -28,7 +28,8 @@ DNMP项目特点：
 - [7.数据库管理](#7数据库管理)
     - [7.1 phpMyAdmin](#71-phpmyadmin)
     - [7.2 phpRedisAdmin](#72-phpredisadmin)
-- [8.在正式环境中安全使用](#8在正式环境中安全使用)
+- [8.修改站点根目录写权限](#8修改站点根目录写权限)
+- [9.在正式环境中安全使用](9在正式环境中安全使用)
 
 
 ## 1.目录结构
@@ -267,7 +268,19 @@ Redis连接信息如下：
 - port: `6379`
 
 
-## 8.在正式环境中安全使用
+## 8.修改站点根目录写权限
+
+默认的，容器中的/var/www/html目录属于root，程序是没有权限写入的，我们需要修改为www-data，PHP才能正常写目录。
+
+先进入到容器中：
+
+```
+$ docker exec -it localhost_php72_1 /bin/bash 然后修改目录权限：
+
+$ chown -R www-data:www-data /var/www/html 这样PHP就能正常读写目录了。
+```
+
+## 9.在正式环境中安全使用
 要在正式环境中使用，请：
 1. 在php.ini中关闭XDebug调试
 2. 增强MySQL数据库访问的安全策略
