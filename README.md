@@ -275,7 +275,7 @@ Redis连接信息如下：
 先进入到容器中：
 
 ```
-$ docker exec -it localhost_php72_1 /bin/bash 然后修改目录权限：
+$ docker exec -it dnmp_php72_1 /bin/bash 然后修改目录权限：
 
 $ chown -R www-data:www-data /var/www/html 这样PHP就能正常读写目录了。
 ```
