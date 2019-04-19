@@ -63,9 +63,7 @@ DNMP项目特点：
     $ sudo yum makecache fast   #更新 yum 缓存
     $ sudo yum -y install docker-ce     #安装 Docker-ce
     ```
-    ```
-    合并命令（此命令可一次性执行上面的安装命令,上面的已经执行则此命令不用再执行）：yum -y install git && sudo yum update && sudo yum install -y yum-utils device-mapper-persistent-data lvm2 && sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo &&  sudo yum makecache fast  &&  sudo yum -y install docker-ce
-    ```
+    
     ```
     $ sudo systemctl start docker   #启动 Docker 后台服务
     $ docker -v     #查看版本，验证是否安装成功
