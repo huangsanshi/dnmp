@@ -264,6 +264,7 @@ http://localhost:8081
 Redis连接信息如下：
 - host: (本项目的Redis容器网络,例如:dnmp_redis_1)
 - port: `6379`
+- auth: `1234567890`
 
 
 ## 8.修改站点根目录写权限
